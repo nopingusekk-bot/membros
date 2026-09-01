@@ -1,2 +1,0 @@
-const {json,ensureDatabase}=require('../_lib');
-module.exports=async(req,res)=>{if(req.method!=='POST')return json(res,405,{error:'Método não permitido'});const key=req.headers['x-setup-key'];if(!process.env.SETUP_KEY||key!==process.env.SETUP_KEY)return json(res,403,{error:'Não autorizado'});try{await ensureDatabase();return json(res,200,{ok:true,message:'Banco configurado e administrador criado/atualizado'})}catch(e){console.error(e);return json(res,500,{error:'Erro ao preparar o banco',detail:e.message})}};

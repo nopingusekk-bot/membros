@@ -1,2 +1,0 @@
-const {sql,json,body,requireAuth}=require('../_lib');
-module.exports=async(req,res)=>{if(req.method!=='POST')return json(res,405,{error:'Método não permitido'});const u=await requireAuth(req,res);if(!u)return;try{const {lesson,note}=await body(req);await sql`insert into notes(member_id,lesson,note) values(${u.id},${lesson},${String(note||'').slice(0,5000)}) on conflict(member_id,lesson) do update set note=excluded.note,updated_at=now()`;return json(res,200,{ok:true})}catch(e){return json(res,500,{error:'Erro ao salvar anotação'})}};
