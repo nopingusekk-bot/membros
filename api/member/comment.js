@@ -1,0 +1,2 @@
+const {sql,json,body,requireAuth}=require('../_lib');
+module.exports=async(req,res)=>{if(req.method!=='POST')return json(res,405,{error:'Método não permitido'});const u=await requireAuth(req,res);if(!u)return;try{const {lesson,text}=await body(req);const t=String(text||'').trim().slice(0,2000);if(!t)return json(res,400,{error:'Escreva um comentário'});await sql`insert into comments(member_id,lesson,text) values(${u.id},${lesson},${t})`;return json(res,201,{ok:true})}catch(e){return json(res,500,{error:'Erro ao enviar comentário'})}};

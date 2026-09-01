@@ -1,0 +1,6 @@
+{
+  "name":"caseirinhos-area-membros",
+  "private":true,
+  "version":"1.0.0",
+  "dependencies":{"@neondatabase/serverless":"latest"}
+}
