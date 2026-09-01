@@ -55,3 +55,20 @@ Abra:
 O retorno esperado começa com `{"ok":true,...}`.
 
 Depois faça login normalmente. O login de administrador entra no painel e os membros são gravados no Neon, então o mesmo usuário funciona no celular e no PC.
+
+## Importante ao substituir um repositório antigo
+
+Remova a pasta `api` antiga antes de enviar esta versão. Não deixe junto as pastas antigas
+`api/admin`, `api/auth` e `api/member`, porque elas criam funções adicionais no Vercel.
+
+A estrutura correta da nova `api/` é exatamente:
+- `_auth.js`
+- `_body.js`
+- `_db.js`
+- `_password.js`
+- `auth.js`
+- `data.js`
+- `health.js`
+- `members.js`
+
+Os quatro arquivos públicos são `auth.js`, `data.js`, `health.js` e `members.js`.
