@@ -1,10 +1,7 @@
 {
-  "functions": { "api/*.js": { "runtime": "nodejs20.x" }
-  },
-  "rewrites": [
-    { "source": "/api/auth", "destination": "/api/auth.js" },
-    { "source": "/api/members", "destination": "/api/members.js" },
-    { "source": "/api/data", "destination": "/api/data.js" },
-    { "source": "/api/health", "destination": "/api/health.js" }
-  ]
+  "functions": {
+    "api/*.js": {
+      "runtime": "nodejs22.x"
+    }
+  }
 }
